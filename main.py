@@ -12,7 +12,7 @@ def main():
   
   H = HTDictionary()
   HI = HTInventory()
-  HI.create_inventory("Short_Food_Database.csv")
+  HI.create_inventory("Food_Database.csv")
 
   
   print("end testing create inventory") 

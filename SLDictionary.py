@@ -18,73 +18,53 @@ class SLDictionary(DictAbstract):
 
 ############################################################
 
-    def mergesort(self, array): #-ben
-        if len(array) > 1:  # if list is populated
-            left_array = array[0:len(array) //2]  #splits array from left to middle
-            right_array = array[len(array) // 2:len(array)]  #splits array from middle to right
-
-            self.mergesort(left_array)
-            self.mergesort(right_array)
+    def mergesort(self, keylist, objlist): #-ben
+        if len(keylist) > 1:  # if list is populated
+            left_K_array = keylist[0:len(keylist) //2]  #splits array from left to middle
+            right_K_array = keylist[len(keylist) // 2:len(keylist)]  #splits array from middle to right
+            left_O_array = objlist[0:len(objlist) //2]  #splits array from left to middle(object array)
+            right_O_array = objlist[len(objlist) // 2:len(objlist)]  #splits array from middle to right(object array)
+            
+            self.mergesort(left_K_array, left_O_array)
+            self.mergesort(right_K_array, right_O_array)
 
             i = 0  #index for left array
             j = 0  #index for right array
             k = 0
 
-            while i < len(left_array) and j < len(right_array):
-                if left_array[i] < right_array[j]:
-                    array[k] = left_array[i]
+            while i < len(left_K_array) and j < len(right_K_array):
+                if left_K_array[i] < right_K_array[j]:
+                    keylist[k] = left_K_array[i]
+                    objlist[k] = left_O_array[i]
                     i += 1
                 else:
-                    array[k] = right_array[j]
+                    keylist[k] = right_K_array[j]
+                    objlist[k] = right_O_array[j]
                     j += 1
                 k += 1
 
             while i < len(
-                    left_array
+                    left_K_array
             ):  #while there are elements in the left array to transfer into new array
-                array[k] = left_array[i]
+                keylist[k] = left_K_array[i]
+                objlist[k] = left_O_array[i]
                 i += 1
                 k += 1
 
             while j < len(
-                    right_array
+                    right_K_array
             ):  #while there are elements in right array to transfer
-                array[k] = right_array[j]
+                keylist[k] = right_K_array[j]
+                objlist[k] = right_O_array[j]
                 j += 1
                 k += 1
 
-        self.KEY_list = array
-        #print(self.KEY_list)
-        return (self.KEY_list)
+        self.KEY_list = keylist
+        self.OBJ_list = objlist
+        return 
 
 #################################################################################
       
-    def sort_foodOBJlist(self, array):#-ben
-
-        codeslist = self.mergesort(self.KEY_list) #calls mergesort to order key list after foods have been added
-        
-        sortedobjs = []      #empty list for foods to be added to after sorting 
-      
-        j = 0 
-        k = 0 
-        #print(len(codeslist))
-        while len(sortedobjs) < len(codeslist):
-          if codeslist[j] == array[k].get_foodcode(): 
-            j += 1 
-            sortedobjs.append(array[k])    #if codes match, append to sorted list 
-            k = 0 
-          else: 
-            k += 1 
-        
-        self.OBJ_list = sortedobjs #replace global list with sorted list. 
-      #cant append straight to global list since function is called multiple times
-      #allows for global list to be referenced in other functions    
-        
-      
-        #print(sortedobjs[len(sortedobjs)-1]) #prints last elem in sorted list (for testing adding foods with highest code                                                                                    in list)
-        #print(sortedobjs) #prints sorted list 
-            
-        
        
               
 
@@ -100,12 +80,9 @@ class SLDictionary(DictAbstract):
 ################################################################
       
     def sort_lists(self):#-ben
-        self.mergesort(self.KEY_list)
-        self.sort_foodOBJlist(self.OBJ_list)
-        #print("newsorted foodcode list")
-       # print(self.KEY_list)    #commenting out, we dont really need to see a list of 9000 codes, if needed just uncomment 
-       # print("object list")    #to print lists before foods are added to them
-        #print(self.OBJ_list)
+        self.mergesort(self.KEY_list,self.OBJ_list)
+
+
 ################################################################
         #-Amrit
         #when final sorting function is done between foodcode list and food object list , call it here, then when calling sort_lists, it will print both sorted lists

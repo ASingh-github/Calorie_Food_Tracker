@@ -43,15 +43,11 @@ class SLInventory(FoodInvAbstract):
 
               
               self.dictionary._add(f.get_foodcode(),f)
-          print("printing unsorted lists  \n")
-          self.dictionary.printlist()
-          print("\n")
-          print("printing sorted lists \n")
-          self.dictionary.sort_lists()
+              self.dictionary.sort_lists()
           
           
           
-          self.dictionary.length()
+
           
   
             #self.KEY_unsortedListself.KEY_unsortedList.append(f.get_foodcode()) 
