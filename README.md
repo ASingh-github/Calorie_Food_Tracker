@@ -4,7 +4,7 @@ This is is a small project to test out different implementations of dictionaries
 
 Use any of the main.py files to test the different data structures and algorithms used.
 
-Authors: Amritpal Singh, Ben
+Authors: Amritpal Singh, Ben Ollar, Carlos Veloz-Avelar
 
                             FILE DESCRIPTION
 HTDictionary.py:
