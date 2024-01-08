@@ -11,8 +11,8 @@ def main():
     sli = SLInventory()
   #this is one copy of the dictionary class. generally we would not call this class directly to make sure we keep up encapsulation.But this is good for testing.
     sld = SLDictionary()  
-  #this is an instance of an inventory class. (this inventory class can also create dictionary objects)
-
+  #this is an instance of an inventory class. (this inventory class can also creates dictionary objects)
+2
 
 
     #sld.mergesort(test_array)
